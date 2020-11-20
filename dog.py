@@ -1,6 +1,7 @@
 # -----------------
 # dog.py
 # -----------------
+
 # Dog Class
 class Dog:
     # Required properties are defined inside the __init__ constructor method
