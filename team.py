@@ -1,6 +1,8 @@
 # -----------------
 # team.py
 # -----------------
+import random
+from hero import Hero
 
 # Team Class
 class Team():
@@ -41,3 +43,44 @@ class Team():
         '''
         self.heroes.append(hero)
 
+    def stats(self):
+        '''
+        Print team statistics.
+        '''
+        for hero in self.heroes:
+            try:
+                kd = hero.kills / hero.deaths
+                print(f"Kill/Deaths: {kd}")
+            except ZeroDivisionError:
+                print("Divide by zero")
+
+    def revive_heroes(self, health = 100):
+        '''
+        Reset all heroes health to starting_health.
+        '''
+        for hero in self.heroes:
+            hero.current_health = hero.starting_health
+
+    def attack(self, other_team):
+        '''
+        Battle each team against each other.
+        '''
+        living_heroes = list()
+        living_opponents = list()
+
+        for hero in self.heroes:
+            living_heroes.append(hero)
+
+        for hero in other_team.heroes:
+            living_opponents.append(hero)
+
+        while len(living_heroes) > 0 and len(living_opponents) > 0:
+            random_hero = self.heroes[random.choice(living_heroes)]
+            random_opponent = other_team.heroes[random.choice(living_opponents)]
+
+            random_hero.fight(random_opponent)
+
+            if random_hero.is_alive() == True and random_opponent.is_alive() == False:
+                living_opponents.remove(random_opponent)
+            else:
+                living_heroes.remove(random_hero)

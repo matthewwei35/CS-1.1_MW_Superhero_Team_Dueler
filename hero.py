@@ -22,6 +22,8 @@ class Hero:
         self.name = name
         self.starting_health = starting_health
         self.current_health = starting_health
+        self.deaths = 0
+        self.kills = 0
     
     def fight(self, opponent):
         '''
@@ -37,8 +39,12 @@ class Hero:
                 opponent.take_damage(self.attack())
                 self.take_damage(opponent.attack())
             if self.is_alive() == False:
+                self.deaths += 1
+                opponent.kills += 1
                 print(f"{opponent.name} won!")
             else:
+                self.kills += 1
+                opponent.deaths += 1
                 print(f"{self.name} won!")
                     
     def add_ability(self, ability):
@@ -105,6 +111,18 @@ class Hero:
         Add weapon to self.abilities.
         '''
         self.abilities.append(weapon)
+
+    def add_kill(self, num_kills):
+        '''
+        Update self.kills by num_kills amount.
+        '''
+        self.kills += num_kills
+
+    def add_death(self, num_deaths):
+        '''
+        Update deaths with num_deaths.
+        '''
+        self.deaths += num_deaths
 
 if __name__ == "__main__":
     # If you run this file from the terminal
