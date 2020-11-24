@@ -48,11 +48,13 @@ class Team():
         Print team statistics.
         '''
         for hero in self.heroes:
-            try:
+            if hero.deaths == 0:
+                hero.deaths = 1
                 kd = hero.kills / hero.deaths
                 print(f"Kill/Deaths: {kd}")
-            except ZeroDivisionError:
-                print("Divide by zero")
+            else:
+                kd = hero.kills / hero.deaths
+                print(f"Kill/Deaths: {kd}")
 
     def revive_heroes(self, health = 100):
         '''

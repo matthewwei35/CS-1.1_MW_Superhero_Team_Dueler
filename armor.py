@@ -18,7 +18,7 @@ class Armor:
         '''
         Return a random value between 0 and the initialized max_block strength.
         '''
-        random_value = random.randint(0, self.max_block)
+        random_value = random.randint(0, int(self.max_block))
         return random_value
 
 if __name__ == "__main__":
