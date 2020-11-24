@@ -10,6 +10,6 @@ class Weapon(Ability):
         '''
         This method returns a random value between one half to the full attack power of the weapon.
         '''
-        half_max_damage = self.max_damage // 2
-        random_value = random.randint(half_max_damage, self.max_damage)
+        half_max_damage = int(self.max_damage) // 2
+        random_value = random.randint(half_max_damage, int(self.max_damage))
         return random_value

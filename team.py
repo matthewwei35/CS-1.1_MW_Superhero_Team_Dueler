@@ -75,8 +75,8 @@ class Team():
             living_opponents.append(hero)
 
         while len(living_heroes) > 0 and len(living_opponents) > 0:
-            random_hero = self.heroes[random.choice(living_heroes)]
-            random_opponent = other_team.heroes[random.choice(living_opponents)]
+            random_hero = random.choice(living_heroes)
+            random_opponent = random.choice(living_opponents)
 
             random_hero.fight(random_opponent)
 
